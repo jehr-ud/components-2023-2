@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TasksUd</string>
+    <string name="btn_add_task">Agregar Tarea</string>
+
+
+    <string name="lbl_register_title">Registrar una nueva tarea</string>
+    <string name="lbl_register_name">Nombre de la tarea</string>
+    <string name="lbl_register_description">Descripción de la tarea</string>
+    <string name="lbl_register_start">Fecha Creación</string>
+    <string name="lbl_register_end">Fecha Máxima para resolver la tarea</string>
+    <string name="register_button">Guardar Tarea</string>
+</resources>
