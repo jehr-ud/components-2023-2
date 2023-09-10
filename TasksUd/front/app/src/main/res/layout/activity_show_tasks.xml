@@ -11,10 +11,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/contentTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
         <Button
             android:id="@+id/addTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/btn_add_task" />
+            android:text="@string/btn_add_task"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

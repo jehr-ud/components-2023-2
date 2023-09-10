@@ -3,9 +3,9 @@ package com.example.tasksud
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
+import android.widget.LinearLayout
+import android.widget.TextView
 
 class ShowTasksActivity : AppCompatActivity() {
     val taskManager = TaskManager
@@ -14,12 +14,29 @@ class ShowTasksActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_tasks)
 
         val btnAddTask: Button = findViewById(R.id.addTask)
+        val layoutTasks: LinearLayout = findViewById(R.id.contentTasks)
 
         var tasks = taskManager.getAll()
 
         for (task in tasks){
-            print("task in the app: ")
-            Log.d("savetask", task.toString())
+            val layoutTask = LinearLayout(this)
+
+            val textViewTask =  TextView(this).apply{
+                text = task.name
+            }
+
+            val buttonTask =  Button(this)
+            buttonTask.text = "Ver"
+            buttonTask.setOnClickListener{
+                val intent = Intent(this, ShowDetailActivity::class.java)
+                intent.putExtra("task", task)
+                startActivity(intent)
+            }
+
+            layoutTask.addView(textViewTask)
+            layoutTask.addView(buttonTask)
+
+            layoutTasks.addView(layoutTask)
         }
 
         btnAddTask.setOnClickListener{
