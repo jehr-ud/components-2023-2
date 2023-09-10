@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hit to Mole</string>
+
+    <string name="btn_start_game_level1">Level 1</string>
+    <string name="btn_start_game_level2">Level 2</string>
+    <string name="btn_start_game_level3">Level 3</string>
+    <string name="lbl_start_game">Welcome to the game</string>
+
+    <string name="lbl_points_game">Puntos:</string>
+
+</resources>
