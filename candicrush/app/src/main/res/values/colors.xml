@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="game_button_blue_light">#2271b3</color>
+    <color name="game_button_yellow_zinc">#f8f32b</color>
+    <color name="game_button_red">#b32428</color>
+    <color name="game_button_green">#00d748</color>
+
 </resources>
