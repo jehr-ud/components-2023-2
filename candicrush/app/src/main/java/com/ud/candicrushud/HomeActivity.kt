@@ -6,18 +6,17 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.ud.candicrushud.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var btnPlay: Button
-    lateinit var editTextName: EditText
+    private lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        btnPlay = findViewById<Button>(R.id.btnPlayHome)
-        editTextName = findViewById<EditText>(R.id.editTextName)
-
-        btnPlay.setOnClickListener{
+        binding.btnPlayHome.setOnClickListener{
            if (isFillFields()){
                Toast.makeText(this,"Debe llenar el nombre",Toast.LENGTH_LONG).show();
            } else{
@@ -26,11 +25,11 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun isFillFields(): Boolean{
-        return editTextName.text.isEmpty()
+    private fun isFillFields(): Boolean{
+        return binding.editTextName.text.isEmpty()
     }
 
-    fun goToGame(){
+    private fun goToGame(){
         val intent = Intent(this, BoardActivity::class.java)
         startActivity(intent)
     }

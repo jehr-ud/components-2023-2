@@ -1,13 +1,15 @@
 package com.ud.candicrushud
 
 import android.content.res.ColorStateList
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.GestureDetector
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.ud.candicrushud.listeners.ButtonGestureListener
 
 class BoardActivity : AppCompatActivity() {
 
@@ -20,12 +22,12 @@ class BoardActivity : AppCompatActivity() {
         generateBoard()
     }
 
-    private fun getButtonWidth(numberRows: Int) : Int{
+    private fun getButtonWidth(numberCols: Int) : Int{
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getRealMetrics(displayMetrics)
         val screenWidth = displayMetrics.widthPixels
 
-        return (screenWidth / numberRows)
+        return (screenWidth / numberCols)
     }
 
     private fun generateBoard(){
@@ -39,16 +41,16 @@ class BoardActivity : AppCompatActivity() {
             ContextCompat.getColor(this, R.color.game_button_green)
         )
 
-        for (row in 1..numberRows){
-            var tableRow = TableRow(this)
-
+        for (row in 1..numberRows) {
+            val tableRow = TableRow(this)
             tableRow.setPadding(0, 0, 0, 0)
 
-            for (col in 1..numberCols){
-                var button = Button(this)
-                button.id = row * (col + 10)
+            for (col in 1..numberCols) {
+                val button = Button(this)
+                val buttonId = row * (col + 10)
+                button.id = buttonId
 
-                val buttonWidth = getButtonWidth(numberRows)
+                val buttonWidth = getButtonWidth(numberCols)
                 val buttonHeight = resources.getDimensionPixelSize(R.dimen.board_button_height)
                 val params = TableRow.LayoutParams(buttonWidth, buttonHeight)
 
@@ -58,10 +60,17 @@ class BoardActivity : AppCompatActivity() {
 
                 button.backgroundTintList = ColorStateList.valueOf(colors.random())
 
+                val gestureDetector = GestureDetector(this, ButtonGestureListener(this, buttonId))
+
+                button.setOnTouchListener { v, event ->
+                    gestureDetector.onTouchEvent(event)
+                }
+
                 tableRow.addView(button)
             }
 
             boardLayout.addView(tableRow)
         }
+
     }
 }
