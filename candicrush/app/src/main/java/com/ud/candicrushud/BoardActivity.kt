@@ -4,12 +4,16 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.GestureDetector
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.ud.candicrushud.listeners.ButtonGestureListener
+import com.ud.candicrushud.utils.HandleMenu
 
 class BoardActivity : AppCompatActivity() {
 
@@ -20,6 +24,17 @@ class BoardActivity : AppCompatActivity() {
 
         boardLayout = findViewById<TableLayout>(R.id.layoutBoard)
         generateBoard()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val handleMenu = HandleMenu()
+        return handleMenu.navigation(this, item)
     }
 
     private fun getButtonWidth(numberCols: Int) : Int{
