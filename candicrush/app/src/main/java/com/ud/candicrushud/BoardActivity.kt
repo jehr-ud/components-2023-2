@@ -13,6 +13,7 @@ import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.ud.candicrushud.listeners.ButtonGestureListener
+import com.ud.candicrushud.model.Board
 import com.ud.candicrushud.utils.HandleMenu
 
 class BoardActivity : AppCompatActivity() {
@@ -49,6 +50,8 @@ class BoardActivity : AppCompatActivity() {
         val numberRows = 5
         val numberCols = 5
 
+        var board = Board(numberRows,numberCols)
+
         val colors = listOf(
             ContextCompat.getColor(this, R.color.game_button_blue_light),
             ContextCompat.getColor(this, R.color.game_button_yellow_zinc),
@@ -80,7 +83,7 @@ class BoardActivity : AppCompatActivity() {
                 button.setOnTouchListener { v, event ->
                     gestureDetector.onTouchEvent(event)
                 }
-
+                board.addElementList(button,0,0)
                 tableRow.addView(button)
             }
 
