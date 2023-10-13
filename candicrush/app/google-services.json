@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "819328156754",
+    "project_id": "candicrushud",
+    "storage_bucket": "candicrushud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819328156754:android:61a3c1e5a9cee3da8bcb8b",
+        "android_client_info": {
+          "package_name": "com.ud.candicrushud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819328156754-1rcd3tng6qurk63irakjd65secbr302e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBsLxIRLP82zeUselZA-HFztfplLHN4jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819328156754-1rcd3tng6qurk63irakjd65secbr302e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

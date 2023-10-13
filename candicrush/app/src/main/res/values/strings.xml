@@ -2,7 +2,7 @@
     <string name="app_name">CandiCrushUD</string>
 
     <string name="txtview_name_home">Nombre de usuario</string>
-    <string name="btn_play_home">Jugar</string>
+    <string name="btn_signin_google">Ingresar con Google</string>
 
     <string name="txtview_target_board">Objetivo:</string>
     <string name="txtview_score_board">Puntaje:</string>
@@ -10,4 +10,5 @@
     <string name="main_menu_settings">Configuración</string>
     <string name="main_menu_play">Jugar</string>
     <string name="main_menu_profile">Perfil</string>
+    <string name="main_menu_logout">Salir</string>
 </resources>

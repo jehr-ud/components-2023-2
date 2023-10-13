@@ -12,6 +12,7 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.firebase.FirebaseApp
 import com.ud.candicrushud.listeners.ButtonGestureListener
 import com.ud.candicrushud.model.Board
 import com.ud.candicrushud.utils.HandleMenu
@@ -22,6 +23,8 @@ class BoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board)
+
+        FirebaseApp.initializeApp(this);
 
         boardLayout = findViewById<TableLayout>(R.id.layoutBoard)
         generateBoard()
@@ -34,8 +37,7 @@ class BoardActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val handleMenu = HandleMenu()
-        return handleMenu.navigation(this, item)
+        return HandleMenu.handleOptionsItemSelected(this, item)
     }
 
     private fun getButtonWidth(numberCols: Int) : Int{

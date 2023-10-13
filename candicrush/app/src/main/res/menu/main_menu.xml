@@ -16,4 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="@string/main_menu_settings" />
+    <item
+        android:id="@+id/main_menu_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/main_menu_logout" />
 </menu>
