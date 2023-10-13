@@ -13,9 +13,13 @@
         android:theme="@style/Theme.CandiCrushUD"
         tools:targetApi="31">
         <activity
+            android:name=".CreationGameActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
             android:name=".BoardActivity"
-            android:theme="@style/Theme.AppCompat"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"

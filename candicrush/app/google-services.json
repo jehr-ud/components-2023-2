@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "819328156754",
+    "firebase_url": "https://candicrushud-default-rtdb.firebaseio.com",
     "project_id": "candicrushud",
     "storage_bucket": "candicrushud.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "819328156754-gn5tqikb0o5oi4q862n5t98spivbfkst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ud.candicrushud",
+            "certificate_hash": "7d5c6a7d5909ff06ed778e2f481ede5a9d02e7ec"
+          }
+        },
         {
           "client_id": "819328156754-1rcd3tng6qurk63irakjd65secbr302e.apps.googleusercontent.com",
           "client_type": 3

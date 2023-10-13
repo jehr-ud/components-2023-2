@@ -11,4 +11,8 @@
     <string name="main_menu_play">Jugar</string>
     <string name="main_menu_profile">Perfil</string>
     <string name="main_menu_logout">Salir</string>
+
+    <string name="textview_game_code">Código de partida</string>
+    <string name="btn_game_code_create">Crear</string>
+    <string name="btn_game_code_use">Acceder</string>
 </resources>

@@ -22,8 +22,6 @@ class HandleMenu {
                     return true
                 }
                 R.id.main_menu_profile -> {
-                    val intent = Intent(activity, LoginActivity::class.java)
-                    activity.startActivity(intent)
                     return true
                 }
                 R.id.main_menu_logout -> {

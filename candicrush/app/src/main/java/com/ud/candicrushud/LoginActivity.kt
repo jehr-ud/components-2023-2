@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun goToGame(){
-        val intent = Intent(this, BoardActivity::class.java)
+        val intent = Intent(this, CreationGameActivity::class.java)
         startActivity(intent)
     }
 
