@@ -3,6 +3,7 @@
 
     <string name="txtview_name_home">Nombre de usuario</string>
     <string name="btn_signin_google">Ingresar con Google</string>
+    <string name="btn_signin_email">Ingresar con correo</string>
 
     <string name="txtview_target_board">Objetivo:</string>
     <string name="txtview_score_board">Puntaje:</string>
@@ -15,4 +16,7 @@
     <string name="textview_game_code">Código de partida</string>
     <string name="btn_game_code_create">Crear</string>
     <string name="btn_game_code_use">Acceder</string>
+
+    <string name="code_message_creation_ok">Se guardo código correctamente</string>
+    <string name="code_message_creation_fail">Fallo al crear código</string>
 </resources>

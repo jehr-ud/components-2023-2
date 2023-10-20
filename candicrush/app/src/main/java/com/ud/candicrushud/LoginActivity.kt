@@ -41,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
         binding.btnPlayHome.setOnClickListener{
             signInWithGoogle()
         }
+
+        binding.btnLoginEmail.setOnClickListener{
+            saveUserData(binding.editTextEmail.text.toString(), "Nombre")
+            goToGame()
+        }
     }
 
     private fun initGoogleSignInClient() {
