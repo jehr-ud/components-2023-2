@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">UsersApp</string>
+    <string name="title_users">Usuarios</string>
+    <string name="title_creation_users">Crear</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="title_user_detail">Detalle del usuario</string>
+
+    <string name="msg_failed_fetch_users">Hay un fallo al traer los usuarios. Intente más tarde</string>
+
+    <string name="msg_required_name">Nombre es requerido</string>
+    <string name="msg_required_user">Nombre de Usuario es requerido</string>
+    <string name="msg_required_password">Password es requerido</string>
+
+    <string name="lbl_user_name">Nombre</string>
+    <string name="lbl_user_username">Nombre de Usuario</string>
+    <string name="lbl_user_password">Password</string>
+    <string name="btn_user_create">CREAR USUARIO</string>
+    <string name="user_creation_ok">¡Usuario creado con exito!</string>
+    <string name="user_creation_error">No se logro crear el usuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

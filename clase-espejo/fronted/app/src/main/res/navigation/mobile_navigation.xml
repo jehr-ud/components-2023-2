@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_list_users">
+
+    <fragment
+        android:id="@+id/navigation_list_users"
+        android:name="com.ud.listusersapp.ui.userlist.UserListFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_user_list" />
+
+    <fragment
+        android:id="@+id/navigation_create_users"
+        android:name="com.ud.listusersapp.ui.usercreate.UserCreateFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_user_create" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.ud.listusersapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_detail_user"
+        android:name="com.ud.listusersapp.ui.userdetail.UserDetailFragment"
+        android:label="@string/title_user_detail"
+        tools:layout="@layout/fragment_user_detail">
+        <argument
+            android:name="user_id"
+            app:argType="string"
+            android:defaultValue="" />
+        </fragment>
+</navigation>
