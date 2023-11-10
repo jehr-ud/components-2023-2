@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CandiCrushUD</string>
+    <string name="app_name">CandyCrushUD</string>
 
     <string name="txtview_name_home">Nombre de usuario</string>
     <string name="btn_signin_google">Ingresar con Google</string>

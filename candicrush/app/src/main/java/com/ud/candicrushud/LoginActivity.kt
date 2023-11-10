@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -42,10 +43,33 @@ class LoginActivity : AppCompatActivity() {
             signInWithGoogle()
         }
 
-        binding.btnLoginEmail.setOnClickListener{
-            saveUserData(binding.editTextEmail.text.toString(), "Nombre")
-            goToGame()
+        binding.loginButton.setOnClickListener{
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                loginUser(email, password)
+            } else {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = FirebaseAuth.getInstance().currentUser
+                    user?.let {
+                        saveUserData(it.uid, it.displayName)
+                    }
+
+                    goToGame()
+                } else {
+                    // If sign-in fails, display a message to the user.
+                    Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun initGoogleSignInClient() {
