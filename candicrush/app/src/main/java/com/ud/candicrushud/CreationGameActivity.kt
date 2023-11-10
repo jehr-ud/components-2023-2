@@ -2,10 +2,16 @@ package com.ud.candicrushud
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.GestureDetector
+import android.widget.Button
+import android.widget.TableRow
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -13,6 +19,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.ud.candicrushud.databinding.ActivityCreationGameBinding
+import com.ud.candicrushud.listeners.ButtonGestureListener
+import com.ud.candicrushud.model.Board
+import com.ud.candicrushud.model.Cell
 import com.ud.candicrushud.model.Game
 import com.ud.candicrushud.model.Player
 
@@ -58,7 +67,7 @@ class CreationGameActivity : AppCompatActivity() {
                 codeRefence?.setValue(game)?.addOnSuccessListener{
                     Toast.makeText(this@CreationGameActivity, R.string.code_message_creation_ok, Toast.LENGTH_LONG)
 
-                    addListenerToRegisteredCode(codeRefence)
+                    addListenerToRegisteredCode(codeRefence, gameCode)
                 }?.addOnFailureListener{
                     Toast.makeText(this@CreationGameActivity, R.string.code_message_creation_fail, Toast.LENGTH_LONG)
                 }
@@ -85,11 +94,12 @@ class CreationGameActivity : AppCompatActivity() {
 
                     game.player2 = Player(playerName, playerUID)
                     game.isStart = true
+                    game.board = generateBoard()
 
                     codeReference.setValue(game)
                         .addOnSuccessListener {
                             Toast.makeText(this@CreationGameActivity, "Game updated successfully", Toast.LENGTH_SHORT).show()
-                            goToBoard()
+                            goToBoard(gameCode)
                         }
                         .addOnFailureListener {
                             Toast.makeText(this@CreationGameActivity, "Failed to update game", Toast.LENGTH_SHORT).show()
@@ -103,7 +113,41 @@ class CreationGameActivity : AppCompatActivity() {
         }
     }
 
-    fun addListenerToRegisteredCode(reference: DatabaseReference){
+    private fun generateBoard(): Board{
+        val numberRows = 5
+        val numberCols = 5
+
+        val colors = listOf(
+            ContextCompat.getColor(this, R.color.game_button_blue_light),
+            ContextCompat.getColor(this, R.color.game_button_yellow_zinc),
+            ContextCompat.getColor(this, R.color.game_button_red),
+            ContextCompat.getColor(this, R.color.game_button_green)
+        )
+
+        val listCell = mutableListOf<Cell>()
+
+        var count = 0
+        for (row in 1..numberRows) {
+            val tableRow = TableRow(this)
+            tableRow.setPadding(0, 0, 0, 0)
+
+            for (col in 1..numberCols) {
+                count++
+
+                val cellId = count
+                var color: Int = colors.random()
+                listCell.add(Cell(cellId, color, true))
+            }
+        }
+
+        return Board(numberRows, numberCols, listCell, calculateBombs(numberRows, numberCols))
+    }
+
+    private fun calculateBombs(numberRows: Int, numberCols: Int):Int{
+        return ((numberRows * numberCols) * 0.2).toInt()
+    }
+
+    fun addListenerToRegisteredCode(reference: DatabaseReference, gameCode: String){
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -111,7 +155,7 @@ class CreationGameActivity : AppCompatActivity() {
 
                     if (game?.player2 != null){
                         Toast.makeText(this@CreationGameActivity, "Game Starting..", Toast.LENGTH_SHORT).show()
-                        goToBoard()
+                        goToBoard(gameCode)
                     }
                 }
             }
@@ -122,8 +166,9 @@ class CreationGameActivity : AppCompatActivity() {
         })
     }
 
-    fun goToBoard(){
+    fun goToBoard(code: String){
         val intent = Intent(this, BoardActivity::class.java)
+        intent.putExtra(KEY_INTENT_CODE, code);
         startActivity(intent)
     }
 
@@ -131,6 +176,7 @@ class CreationGameActivity : AppCompatActivity() {
         private val TAG = "CREATIONGAME"
         private const val PREFS_NAME = "Candy-crushUD"
         private const val KEY_USER_ID = "userId"
+        private const val KEY_INTENT_CODE = "game_code"
         private const val KEY_USER_NAME = "userName"
     }
 }

@@ -7,5 +7,6 @@ data class Game (
     var turn: String = "",
     var isStart: Boolean = false,
     var isFinished: Boolean = false,
-    var winner: String? = null
+    var winner: String? = null,
+    var board: Board? = null
 )
