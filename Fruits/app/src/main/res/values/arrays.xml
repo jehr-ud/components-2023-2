@@ -1,0 +1,11 @@
+<!-- res/values/arrays.xml -->
+
+<resources>
+    <string-array name="sort_options">
+        <item>sugar</item>
+        <item>fat</item>
+        <item>carbohydrates</item>
+        <item>protein</item>
+        <item>calories</item>
+    </string-array>
+</resources>

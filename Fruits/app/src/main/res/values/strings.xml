@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fruits</string>
+
+    <string name="main_activity_order_lbl">Order by</string>
+    <string name="main_activity_search_lbl">Search</string>
+    <string name="datils_activity_title_lbl">Nutritions: </string>
+</resources>
